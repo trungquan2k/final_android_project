@@ -34,9 +34,10 @@ fun HomeScreen(viewModel: MainViewModel) {
         Column(
             modifier = Modifier
                 .padding(10.dp)
-                .verticalScroll(scrollState)
         ) {
             ScrollEffectPager()
+            ListBookScreen(viewModel = viewModel)
+            CategorySection()
             ListBookScreen(viewModel = viewModel)
             CategorySection()
             ListBookScreen(viewModel = viewModel)
@@ -88,5 +89,6 @@ fun CategorySection() {
         }
     }
 }
+
 
 

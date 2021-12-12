@@ -90,12 +90,18 @@ fun AppContent(viewModel: MainViewModel) {
                 )
             },
             content = {
-                RoundedCornerShapes()
-                ShadowComponent()
-                MainScreenContainer(
-                    screenState = screenState,
-                    viewModel = viewModel,
-                )
+                Box(
+                    modifier= Modifier
+                        .verticalScroll(scrollState)
+                ){
+//                    RoundedCornerShapes()
+//                    ShadowComponent()
+                    MainScreenContainer(
+                        screenState = screenState,
+                        viewModel = viewModel,
+                    )
+                }
+
             },
             bottomBar = {
                 BottomNavigationComponent(

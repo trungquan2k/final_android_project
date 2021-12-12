@@ -13,7 +13,6 @@ import com.example.jetsellbook.ui.theme.JetSellBookTheme
 import com.example.jetsellbook.viewmodel.MainViewModel
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-
 class MainActivity : ComponentActivity() {
 
     @ExperimentalAnimationApi
@@ -32,11 +31,7 @@ class MainActivity : ComponentActivity() {
             }
             JetSellBookTheme() {
                 Surface(color = MaterialTheme.colors.background) {
-
-
                 }
-
-
             }
             JetBookWormApp(viewModel)
         }

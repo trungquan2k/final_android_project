@@ -27,6 +27,8 @@ import coil.compose.rememberImagePainter
 
 import com.example.jetsellbook.viewmodel.MainViewModel
 import com.example.jetsellbook.R
+import com.example.jetsellbook.components.BookSellerItem
+
 @Composable
 fun ListBookScreen(viewModel: MainViewModel) {
     Column(modifier = Modifier.padding(8.dp)) {
@@ -40,48 +42,54 @@ fun ListBookScreen(viewModel: MainViewModel) {
         if (viewModel.errorMessage.isEmpty()) {
             LazyRow {
                 items(viewModel.bookList) { book ->
-                    Card(
-                        Modifier
-                            .width(160.dp)
-                            .clickable { }
-                            .shadow(elevation = 2.dp),
-                        shape = RoundedCornerShape(15.dp)
-                    ) {
-                        Column(
-                            Modifier
-                                .padding(bottom = 32.dp)
-                        ) {
-                            Image(
-                                painter = rememberImagePainter(book.image),
-                                contentDescription = "",
-                                modifier = Modifier
-                                    .width(100.dp)
-                                    .aspectRatio(1f)
-                                    .height(100.dp),
-                                contentScale = ContentScale.Fit
-                            )
-                            Column(
-                                Modifier
-                                    .fillMaxWidth()
-                                    .padding(horizontal = 8.dp)
-                            ) {
-                                Text(text = book.book_name, fontWeight = FontWeight.Bold)
-                                Row {
-                                    Text(
-                                        "${book.price}",
-//                                        textDecoration = if (book.price_promotion > 0.toString())
+                    BookSellerItem(
+                        imagePainter = rememberImagePainter(book.image),
+                        name = book.book_name,
+                        price = book.price,
+                        discountPercent = book.price_promotion
+                    )
+//                    Card(
+//                        Modifier
+//                            .width(160.dp)
+//                            .clickable { }
+//                            .shadow(elevation = 2.dp),
+//                        shape = RoundedCornerShape(15.dp)
+//                    ) {
+//                        Column(
+//                            Modifier
+//                                .padding(bottom = 32.dp)
+//                        ) {
+//                            Image(
+//                                painter = rememberImagePainter(book.image),
+//                                contentDescription = "",
+//                                modifier = Modifier
+//                                    .width(100.dp)
+//                                    .aspectRatio(1f)
+//                                    .height(100.dp),
+//                                contentScale = ContentScale.Fit
+//                            )
+//                            Column(
+//                                Modifier
+//                                    .fillMaxWidth()
+//                                    .padding(horizontal = 8.dp)
+//                            ) {
+//                                Text(text = book.book_name, fontWeight = FontWeight.Bold)
+//                                Row {
+//                                    Text(
+//                                        "${book.price}",
+//                                      textDecoration = if (book.price_promotion > 0)
 //                                            TextDecoration.LineThrough
-//                                        else
-//                                            TextDecoration.None,
-//                                        color = if (book.price_promotion > 0.toString()) Color.Gray else Color.Black
-                                    )
-//                                    if (book.price_promotion > 0.toString()) {
+//                                       else
+//                                           TextDecoration.None,
+//                                       color = if (book.price_promotion > 0) Color.Gray else Color.Black
+//                                   )
+//                                    if (book.price_promotion > 0) {
 //                                        Text(text = "[$book.price_promotion%]", color = MaterialTheme.colors.primary)
 //                                    }
-                                }
-                            }
-                        }
-                    }
+//                                }
+//                            }
+//                        }
+//                    }
 //                    Card(
 //                        modifier = Modifier
 //                            .clickable { }
